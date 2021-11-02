@@ -11,10 +11,11 @@ app
 	)
 	.option("-f, --folder", "creates the component in a folder")
 	.option("-c, --stylesheet, --css", "include a stylesheet file")
+	.option("-i, --importcss", "import the css file in jsx file")
 	.parse();
 
-const { name, folder, stylesheet } = app.opts();
+const { name, folder, stylesheet, importcss } = app.opts();
 console.log(name, folder, stylesheet);
 if (name) {
-	generateComponent(name, folder, stylesheet);
+	generateComponent(name, folder, stylesheet, importcss);
 }
