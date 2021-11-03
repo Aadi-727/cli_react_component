@@ -1,16 +1,18 @@
 {
-  "name": "react_component",
-  "version": "1.0.0",
-  "description": "React componet generator",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "Zoyo",
-  "license": "MIT",
-  "dependencies": {
-    "chalk": "^4.1.2",
-    "commander": "^8.3.0"
-  }
+	"name": "rc",
+	"version": "1.0.0",
+	"description": "React component generator with folder, css and other feathers",
+	"main": "index.js",
+	"preferGlobal": true,
+	"bin": "./index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"keywords": [],
+	"author": "Zoyo",
+	"license": "MIT",
+	"dependencies": {
+		"chalk": "^4.1.2",
+		"commander": "^8.3.0"
+	}
 }

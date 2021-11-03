@@ -8,25 +8,31 @@ const generateComponent = (
 	name = "Component",
 	folder = false,
 	css = false,
-	imp_css = false
+	lower = false
 ) => {
 	if (folder) {
 		fs.mkdir(path.join(__dirname, `/${capitalize(name)}`), {}, (err) => {
 			if (err) throw err;
 		});
-		component(name, css, imp_css);
+		component(name, css, lower, folder);
+	}
+	if (!folder && name) {
+		component(name, css, lower, folder);
 	}
 };
 
-const component = (name, css, imp_css) => {
-	const caps_name = capitalize(name);
+const component = (name, css, lower, folder) => {
+	let caps_name = lower ? name.toLowerCase() : capitalize(name);
+	const _p = folder
+		? path.join(__dirname, `/${caps_name}`, `${caps_name}.js`)
+		: path.join(__dirname, "./", `${caps_name}.js`);
 	// fs.mkdir(path.join(__dirname, `/${caps_name}`), {}, (err) => {
 	// 	if (err) throw err;
 	// });
 
-	if (imp_css) {
+	if (css) {
 		fs.writeFile(
-			path.join(__dirname, `/${caps_name}`, `${caps_name}.js`),
+			_p,
 			`import "${caps_name}.style.css;"` +
 				os.EOL +
 				os.EOL +
@@ -51,34 +57,15 @@ const component = (name, css, imp_css) => {
 			}
 		);
 	} else {
-		fs.writeFile(
-			path.join(__dirname, `/${caps_name}`, `${caps_name}.js`),
-
-			`const ${caps_name} = () => { ` +
-				os.EOL +
-				"	return (" +
-				os.EOL +
-				"		<div>" +
-				os.EOL +
-				os.EOL +
-				"		</div>" +
-				os.EOL +
-				" )" +
-				os.EOL +
-				"}" +
-				os.EOL +
-				os.EOL +
-				`export default ${caps_name}`,
-			"utf-8",
-			(err) => {
-				if (err) throw err;
-			}
-		);
+		makeFile(caps_name, folder);
 	}
 
 	if (css) {
+		const _pcss = folder
+			? path.join(__dirname, `/${caps_name}`, `${caps_name}.style.css`)
+			: path.join(__dirname, `${caps_name}.style.css`);
 		fs.writeFile(
-			path.join(__dirname, `/${caps_name}`, `${name}.style.css`),
+			_pcss,
 			"*," +
 				os.EOL +
 				"*::before," +
@@ -107,6 +94,36 @@ const component = (name, css, imp_css) => {
 			}
 		);
 	}
+};
+
+const makeFile = (caps_name, folder) => {
+	const _p = folder
+		? path.join(__dirname, `/${caps_name}`, `${caps_name}.js`)
+		: path.join(__dirname, `${caps_name}.js`);
+
+	fs.writeFile(
+		_p,
+
+		`const ${caps_name} = () => { ` +
+			os.EOL +
+			"	return (" +
+			os.EOL +
+			"		<div>" +
+			os.EOL +
+			os.EOL +
+			"		</div>" +
+			os.EOL +
+			" )" +
+			os.EOL +
+			"}" +
+			os.EOL +
+			os.EOL +
+			`export default ${caps_name}`,
+		"utf-8",
+		(err) => {
+			if (err) throw err;
+		}
+	);
 };
 
 const capitalize = (name) => {
