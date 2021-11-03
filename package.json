@@ -1,5 +1,5 @@
 {
-	"name": "rc",
+	"name": "@zoyo/rc",
 	"version": "1.0.0",
 	"description": "React component generator with folder, css and other feathers",
 	"main": "index.js",
