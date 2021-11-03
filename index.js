@@ -12,7 +12,6 @@ app
 	.parse();
 
 let fileName = process.argv[2];
-console.log(app.opts());
 
 const { folder, stylesheet, lower } = app.opts();
 if (fileName) {
