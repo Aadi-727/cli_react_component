@@ -10,8 +10,9 @@ const generateComponent = (
 	css = false,
 	lower = false
 ) => {
+	const caps_name = lower ? name.toLowerCase() : capitalize(name);
 	if (folder) {
-		fs.mkdir(path.join(process.cwd(), `/${capitalize(name)}`), {}, (err) => {
+		fs.mkdir(path.join(process.cwd(), `/${caps_name}`), {}, (err) => {
 			if (err) throw err;
 		});
 		component(name, css, lower, folder);
