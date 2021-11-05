@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+#!/usr/bin/node env
 
 const app = require("commander");
 const chalk = require("chalk");
@@ -13,10 +13,11 @@ app
 
 let fileName = process.argv[2];
 
+console.log(process.cwd());
 const { folder, stylesheet, lower } = app.opts();
 if (fileName) {
 	generateComponent(fileName, folder, stylesheet, lower);
 } else {
-	console.log(chalk.red(chalk.bold("No name for componet")));
+	console.log(chalk.red(chalk.bold("No name for component")));
 	return;
 }

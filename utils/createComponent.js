@@ -11,7 +11,7 @@ const generateComponent = (
 	lower = false
 ) => {
 	if (folder) {
-		fs.mkdir(path.join(__dirname, `/${capitalize(name)}`), {}, (err) => {
+		fs.mkdir(path.join(process.cwd(), `/${capitalize(name)}`), {}, (err) => {
 			if (err) throw err;
 		});
 		component(name, css, lower, folder);
@@ -24,8 +24,8 @@ const generateComponent = (
 const component = (name, css, lower, folder) => {
 	let caps_name = lower ? name.toLowerCase() : capitalize(name);
 	const _p = folder
-		? path.join(__dirname, `/${caps_name}`, `${caps_name}.js`)
-		: path.join(__dirname, "./", `${caps_name}.js`);
+		? path.join(process.cwd(), `/${caps_name}`, `${caps_name}.js`)
+		: path.join(process.cwd(), "./", `${caps_name}.js`);
 	// fs.mkdir(path.join(__dirname, `/${caps_name}`), {}, (err) => {
 	// 	if (err) throw err;
 	// });
@@ -62,8 +62,8 @@ const component = (name, css, lower, folder) => {
 
 	if (css) {
 		const _pcss = folder
-			? path.join(__dirname, `/${caps_name}`, `${caps_name}.style.css`)
-			: path.join(__dirname, `${caps_name}.style.css`);
+			? path.join(process.cwd(), `/${caps_name}`, `${caps_name}.style.css`)
+			: path.join(process.cwd(), `${caps_name}.style.css`);
 		fs.writeFile(
 			_pcss,
 			"*," +
@@ -98,8 +98,8 @@ const component = (name, css, lower, folder) => {
 
 const makeFile = (caps_name, folder) => {
 	const _p = folder
-		? path.join(__dirname, `/${caps_name}`, `${caps_name}.js`)
-		: path.join(__dirname, `${caps_name}.js`);
+		? path.join(process.cwd(), `/${caps_name}`, `${caps_name}.js`)
+		: path.join(process.cwd(), `${caps_name}.js`);
 
 	fs.writeFile(
 		_p,

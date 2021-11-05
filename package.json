@@ -4,7 +4,7 @@
 	"description": "React component generator with folder, css and other feathers",
 	"main": "index.js",
 	"preferGlobal": true,
-	"bin": "./index.js",
+	"bin": "index.js",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
