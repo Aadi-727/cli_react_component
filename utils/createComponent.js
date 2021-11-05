@@ -1,33 +1,28 @@
 const fs = require("fs");
 const path = require("path");
-const chalk = require("chalk");
-const { reset } = require("chalk");
 const component = require("./component");
 const capitalize = require("./capitalize");
 const generateComponent = (
 	name = "Component",
 	folder = false,
 	css = false,
-	lower = false
+	lower = false,
+	custom = false
 ) => {
-	const caps_name = lower ? name.toLowerCase() : capitalize(name);
+	let caps_name = name;
+
+	if (!custom) {
+		caps_name = lower ? name.toLowerCase() : capitalize(name);
+	}
 	if (folder) {
 		fs.mkdir(path.join(process.cwd(), `/${caps_name}`), {}, (err) => {
 			if (err) throw err;
 		});
-		component(name, css, lower, folder);
+		component(caps_name, css, folder);
 	}
 	if (!folder && name) {
-		component(name, css, lower, folder);
+		component(caps_name, css, folder);
 	}
 };
-
-/*
-*,
-*::before,
-*::after {
-	box-sizing: border-box;
-}
-*/
 
 module.exports = generateComponent;

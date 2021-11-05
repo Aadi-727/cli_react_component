@@ -8,15 +8,17 @@ app.version("1.0.0").description("React component generator CLI");
 app
 	.option("-f, --folder", "creates the component in a folder")
 	.option("-l, --lower", "creates the component in a lower case name")
-	.option("-c, --stylesheet, --css", "include a stylesheet file")
+	.option("-css, --stylesheet", "include a stylesheet file")
+	.option("-c, --custom", "Specify a custom name for the component")
+
 	.parse();
 
 let fileName = process.argv[2];
 
-const { folder, stylesheet, lower } = app.opts();
+const { folder, stylesheet, lower, custom } = app.opts();
 if (fileName) {
-	generateComponent(fileName, folder, stylesheet, lower);
+	generateComponent(fileName, folder, stylesheet, lower, custom);
 } else {
-	console.log(chalk.red(chalk.bold("No name for component")));
+	console.log(chalk.red.bold("No name for component"));
 	return;
 }

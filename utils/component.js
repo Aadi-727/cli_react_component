@@ -2,9 +2,9 @@ const path = require("path");
 const fs = require("fs");
 const makeFile = require("./makeFile");
 const capitalize = require("./capitalize");
+const chalk = require("chalk");
 
-const component = (name, css, lower, folder) => {
-	const caps_name = lower ? name.toLowerCase() : capitalize(name);
+const component = (caps_name, css, folder) => {
 	const _p = folder
 		? path.join(process.cwd(), `/${caps_name}`, `${caps_name}.js`)
 		: path.join(process.cwd(), "./", `${caps_name}.js`);
@@ -23,6 +23,11 @@ const ${caps_name} = () => {
 	if (css) {
 		fs.writeFile(_p, react_snippet, (err) => {
 			if (err) throw err;
+			console.log(
+				chalk.green.bold("Component created with ") +
+					chalk.bgHex("#e67b35").bold(` ${caps_name}.js`) +
+					chalk.bgBlue.bold(` ${caps_name}.style.css`)
+			);
 		});
 	} else {
 		makeFile(caps_name, folder);
