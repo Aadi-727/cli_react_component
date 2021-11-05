@@ -13,7 +13,6 @@ app
 
 let fileName = process.argv[2];
 
-console.log(process.cwd());
 const { folder, stylesheet, lower } = app.opts();
 if (fileName) {
 	generateComponent(fileName, folder, stylesheet, lower);
