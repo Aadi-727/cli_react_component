@@ -25,8 +25,8 @@ const ${caps_name} = () => {
 			if (err) throw err;
 			console.log(
 				chalk.green.bold("Component created with ") +
-					chalk.bgHex("#e67b35").bold(` ${caps_name}.js`) +
-					chalk.bgBlue.bold(` ${caps_name}.style.css`)
+					chalk.bgHex("#e67b35").bold(` ${caps_name}.js `) +
+					chalk.bgBlue.bold(` ${caps_name}.style.css `)
 			);
 		});
 	} else {

@@ -1,6 +1,6 @@
 {
 	"name": "@zoyo/rc",
-	"version": "1.0.1",
+	"version": "1.1.0",
 	"description": "React component generator with folder, css and other feathers",
 	"main": "index.js",
 	"preferGlobal": true,

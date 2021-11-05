@@ -2,6 +2,7 @@ const fs = require("fs");
 const path = require("path");
 const component = require("./component");
 const capitalize = require("./capitalize");
+const chalk = require("chalk");
 const generateComponent = (
 	name = "Component",
 	folder = false,
@@ -17,6 +18,11 @@ const generateComponent = (
 	if (folder) {
 		fs.mkdir(path.join(process.cwd(), `/${caps_name}`), {}, (err) => {
 			if (err) throw err;
+			console.log(
+				chalk.green.bold("Folder Created: ") +
+					chalk.bgHex("#87522f").bold(` ${caps_name} `) +
+					`\n`
+			);
 		});
 		component(caps_name, css, folder);
 	}
