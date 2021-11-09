@@ -74,4 +74,7 @@ body {
 > This flag will allow you to put any name of  your choice without formatting your component name
 >>  -> *ThisIsAComponent* -> *cOmponent* etc ...
 
-[^1]: foot 
+---
+---
+*This was just a fun project for me. I will try to improve this cli whenever possible*
+**Thankyou**
