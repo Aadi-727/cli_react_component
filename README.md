@@ -17,10 +17,6 @@
 ```
 ---
 
-- Change directory to your components folder 
-```bash
-  cd ./<components dirname>
-```
 ---
 > Make sure that you have installed the package **globally -g**, otherwise it will not work from anywhere in your machine
 ---
