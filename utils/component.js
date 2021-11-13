@@ -1,7 +1,6 @@
 const path = require("path");
 const fs = require("fs");
 const makeFile = require("./makeFile");
-const capitalize = require("./capitalize");
 const chalk = require("chalk");
 
 const component = (caps_name, css, folder) => {
@@ -9,7 +8,7 @@ const component = (caps_name, css, folder) => {
 		? path.join(process.cwd(), `/${caps_name}`, `${caps_name}.js`)
 		: path.join(process.cwd(), "./", `${caps_name}.js`);
 
-	const react_snippet = `import \"./${caps_name}.style.css\"
+	const react_snippet = `import \"./${caps_name.toLowerCase()}.css\"
 const ${caps_name} = () => { 
 	return (
 		<div>
@@ -26,7 +25,7 @@ const ${caps_name} = () => {
 			console.log(
 				chalk.green.bold("Component created with ") +
 					chalk.bgHex("#e67b35").bold(` ${caps_name}.js `) +
-					chalk.bgBlue.bold(` ${caps_name}.style.css `)
+					chalk.bgBlue.bold(` ${caps_name}.css `)
 			);
 		});
 	} else {
@@ -50,8 +49,12 @@ body {
 	`;
 	if (css) {
 		const _pcss = folder
-			? path.join(process.cwd(), `/${caps_name}`, `${caps_name}.style.css`)
-			: path.join(process.cwd(), `${caps_name}.style.css`);
+			? path.join(
+					process.cwd(),
+					`/${caps_name}`,
+					`${caps_name.toLowerCase()}.css`
+			  )
+			: path.join(process.cwd(), `${caps_name.toLowerCase()}.css`);
 		fs.writeFile(_pcss, css_snippet, "utf-8", (err) => {
 			if (err) throw err;
 		});
